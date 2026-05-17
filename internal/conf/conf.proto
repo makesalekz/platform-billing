@@ -9,6 +9,11 @@ message Bootstrap {
   Server server = 1;
   string db = 2;
   string nats = 3;
+  Discovery discovery = 4;
+}
+
+message Discovery {
+  string tenants_endpoint = 1;
 }
 
 message Server {

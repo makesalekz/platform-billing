@@ -18,11 +18,15 @@ import (
 // Default commission rate (3%).
 var DefaultRate = decimal.NewFromFloat(0.03)
 
+// DefaultManagerShareRate is the default revenue share percentage for managers (20%).
+var DefaultManagerShareRate = decimal.NewFromFloat(0.20)
+
 type BillingUsecase struct {
 	log            *log.Helper
 	commissions    data.CommissionsRepo
 	exclusions     data.ExclusionsRepo
 	saleEvents     data.SaleEventsRepo
+	tenantsClient  data.TenantsClient
 	nc             *nats.Conn
 }
 
@@ -31,14 +35,16 @@ func NewBillingUsecase(
 	commissions data.CommissionsRepo,
 	exclusions data.ExclusionsRepo,
 	saleEvents data.SaleEventsRepo,
+	tenantsClient data.TenantsClient,
 	nc *nats.Conn,
 ) *BillingUsecase {
 	return &BillingUsecase{
-		log:         log.NewHelper(logger),
-		commissions: commissions,
-		exclusions:  exclusions,
-		saleEvents:  saleEvents,
-		nc:          nc,
+		log:           log.NewHelper(logger),
+		commissions:   commissions,
+		exclusions:    exclusions,
+		saleEvents:    saleEvents,
+		tenantsClient: tenantsClient,
+		nc:            nc,
 	}
 }
 
@@ -179,6 +185,9 @@ func (uc *BillingUsecase) closeCommission(ctx context.Context, c *ent.Commission
 		return err
 	}
 
+	// Revenue share: lookup referred_by via tenants service (Story 10.5)
+	uc.calculateManagerShare(ctx, c.ID, c.TenantID, commissionAmount)
+
 	_, err = uc.commissions.UpdateStatus(ctx, c.ID, enum.Charged)
 	if err != nil {
 		return err
@@ -188,6 +197,31 @@ func (uc *BillingUsecase) closeCommission(ctx context.Context, c *ent.Commission
 	uc.publishInvoiceCreated(c.TenantID, c.PeriodStart, c.PeriodEnd, commissionAmount)
 
 	return nil
+}
+
+// calculateManagerShare looks up the tenant's referred_by and calculates manager's cut.
+func (uc *BillingUsecase) calculateManagerShare(ctx context.Context, commissionID, tenantID int64, commissionAmount decimal.Decimal) {
+	if uc.tenantsClient == nil {
+		return
+	}
+
+	tenant, err := uc.tenantsClient.GetTenant(ctx, tenantID)
+	if err != nil {
+		uc.log.Warnf("failed to get tenant %d for revenue share: %v", tenantID, err)
+		return
+	}
+
+	if tenant == nil || tenant.ReferredBy == nil || *tenant.ReferredBy == 0 {
+		return
+	}
+
+	// Use default share rate
+	shareRate := DefaultManagerShareRate
+	managerShare := commissionAmount.Mul(shareRate)
+
+	if err := uc.commissions.UpdateManagerShare(ctx, commissionID, shareRate, managerShare); err != nil {
+		uc.log.Errorf("failed to update manager share for commission %d: %v", commissionID, err)
+	}
 }
 
 func (uc *BillingUsecase) publishInvoiceCreated(tenantID int64, periodStart, periodEnd time.Time, amount decimal.Decimal) {

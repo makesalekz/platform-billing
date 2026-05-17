@@ -17,6 +17,7 @@ type CommissionsRepo interface {
 	ListPending(ctx context.Context, periodEnd time.Time) ([]*ent.Commission, error)
 	UpdateStatus(ctx context.Context, id int64, status enum.CommissionStatus) (*ent.Commission, error)
 	UpdateAmounts(ctx context.Context, id int64, gmv, excludedAmount, taxableAmount, commissionAmount decimal.Decimal) (*ent.Commission, error)
+	UpdateManagerShare(ctx context.Context, id int64, shareRate, managerShare decimal.Decimal) error
 }
 
 type commissionsRepo struct {
@@ -85,4 +86,11 @@ func (r *commissionsRepo) UpdateAmounts(ctx context.Context, id int64, gmv, excl
 		SetTaxableAmount(taxableAmount).
 		SetCommission(commissionAmount).
 		Save(ctx)
+}
+
+func (r *commissionsRepo) UpdateManagerShare(ctx context.Context, id int64, shareRate, managerShare decimal.Decimal) error {
+	return r.db.Commission.UpdateOneID(id).
+		SetManagerShareRate(shareRate).
+		SetManagerShare(managerShare).
+		Exec(ctx)
 }

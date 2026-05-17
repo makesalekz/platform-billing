@@ -29,15 +29,23 @@ func wireApp(bc *conf.Bootstrap, logger log.Logger) (*kratos.App, func(), error)
 		return nil, nil, err
 	}
 
+	tenantsClient, tenantsCleanup, err := data.NewTenantsClientFromConf(bc, logger)
+	if err != nil {
+		natsCleanup()
+		cleanup()
+		return nil, nil, err
+	}
+
 	commissionsRepo := data.NewCommissionsRepo(dataData)
 	exclusionsRepo := data.NewExclusionsRepo(dataData)
 	saleEventsRepo := data.NewSaleEventsRepo(dataData)
 
-	billingUsecase := biz.NewBillingUsecase(logger, commissionsRepo, exclusionsRepo, saleEventsRepo, natsConn)
+	billingUsecase := biz.NewBillingUsecase(logger, commissionsRepo, exclusionsRepo, saleEventsRepo, tenantsClient, natsConn)
 
 	// Start NATS consumer for sales events
 	_, consumerCleanup, err := biz.NewConsumer(natsConn, billingUsecase, logger)
 	if err != nil {
+		tenantsCleanup()
 		natsCleanup()
 		cleanup()
 		return nil, nil, err
@@ -51,6 +59,7 @@ func wireApp(bc *conf.Bootstrap, logger log.Logger) (*kratos.App, func(), error)
 
 	return app, func() {
 		consumerCleanup()
+		tenantsCleanup()
 		natsCleanup()
 		cleanup()
 	}, nil

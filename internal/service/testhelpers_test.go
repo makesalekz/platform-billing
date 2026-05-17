@@ -8,6 +8,7 @@ import (
 	"gitlab.calendaria.team/services/platform-billing/ent/enum"
 	"gitlab.calendaria.team/services/platform-billing/internal/biz"
 	"gitlab.calendaria.team/services/platform-billing/internal/data"
+	tenants_v1 "gitlab.calendaria.team/services/tenants/api/tenants/v1"
 	"gitlab.calendaria.team/services/utils/v2/auth"
 
 	"github.com/go-kratos/kratos/v2/log"
@@ -87,6 +88,16 @@ func (m *mockCommissionsRepo) UpdateAmounts(_ context.Context, id int64, gmv, ex
 	c.TaxableAmount = taxableAmount
 	c.Commission = commissionAmount
 	return c, nil
+}
+
+func (m *mockCommissionsRepo) UpdateManagerShare(_ context.Context, id int64, shareRate, managerShare decimal.Decimal) error {
+	c, ok := m.commissions[id]
+	if !ok {
+		return &ent.NotFoundError{}
+	}
+	c.ManagerShareRate = shareRate
+	c.ManagerShare = managerShare
+	return nil
 }
 
 // --- Mock ExclusionsRepo ---
@@ -198,6 +209,14 @@ func (m *mockSaleEventsRepo) ListByTenantAndPeriod(_ context.Context, tenantID i
 	return result, nil
 }
 
+// --- Mock TenantsClient ---
+
+type mockTenantsClient struct{}
+
+func (m *mockTenantsClient) GetTenant(_ context.Context, _ int64) (*tenants_v1.Tenant, error) {
+	return &tenants_v1.Tenant{}, nil
+}
+
 // --- Test setup ---
 
 func setupService() (*PlatformBillingService, *biz.BillingUsecase, *mockCommissionsRepo, *mockExclusionsRepo, *mockSaleEventsRepo) {
@@ -205,7 +224,7 @@ func setupService() (*PlatformBillingService, *biz.BillingUsecase, *mockCommissi
 	exclusionsRepo := newMockExclusionsRepo()
 	saleEventsRepo := newMockSaleEventsRepo()
 
-	uc := biz.NewBillingUsecase(log.DefaultLogger, commissionsRepo, exclusionsRepo, saleEventsRepo, nil)
+	uc := biz.NewBillingUsecase(log.DefaultLogger, commissionsRepo, exclusionsRepo, saleEventsRepo, &mockTenantsClient{}, nil)
 	svc := NewPlatformBillingService(uc)
 	return svc, uc, commissionsRepo, exclusionsRepo, saleEventsRepo
 }

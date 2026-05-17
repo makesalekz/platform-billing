@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:15
+    container_name: platform_billing_db
+    environment:
+      POSTGRES_USER: me
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: platform_billing
+    ports:
+      - '5442:5432'
+    volumes:
+      - platform_billing_data:/var/lib/postgresql/data
+
+  service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    container_name: platform_billing_service
+    ports:
+      - '8008:8000'
+      - '9008:9000'
+    depends_on:
+      - db
+    environment:
+      - AUTOMIGRATE=true
+    command: ["./app", "-conf", "config.yaml"]
+
+volumes:
+  platform_billing_data:

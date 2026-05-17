@@ -1,0 +1,6 @@
+server:
+  grpc:
+    addr: 0.0.0.0:9000
+    timeout: 10s
+db: postgres://me:password@localhost:5442/platform_billing?sslmode=disable
+nats: nats://localhost:4222

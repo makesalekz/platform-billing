@@ -1,0 +1,68 @@
+syntax = "proto3";
+
+package platform_billing.v1;
+
+option go_package = "gitlab.calendaria.team/services/platform-billing/api/platform_billing/v1;platform_billing_v1";
+
+import "api/platform_billing/v1/models.proto";
+
+service PlatformBillingService {
+  // Story 7.2: Exclusions
+  rpc CreateExclusion(CreateExclusionRequest) returns (CreateExclusionReply);
+  rpc ListExclusions(ListExclusionsRequest) returns (ListExclusionsReply);
+  rpc DeleteExclusion(DeleteExclusionRequest) returns (DeleteExclusionReply);
+
+  // Story 7.3: Auto Charge
+  rpc ClosePeriod(ClosePeriodRequest) returns (ClosePeriodReply);
+
+  // Story 7.4: Billing Report
+  rpc GetBillingReport(GetBillingReportRequest) returns (GetBillingReportReply);
+}
+
+// --- Exclusions ---
+
+message CreateExclusionRequest {
+  string brand_name = 1;
+  repeated int64 sku_ids = 2;
+  string start_date = 3;
+  string end_date = 4;
+}
+
+message CreateExclusionReply {
+  Exclusion exclusion = 1;
+}
+
+message ListExclusionsRequest {}
+
+message ListExclusionsReply {
+  repeated Exclusion items = 1;
+}
+
+message DeleteExclusionRequest {
+  int64 id = 1;
+}
+
+message DeleteExclusionReply {}
+
+// --- Close Period ---
+
+message ClosePeriodRequest {
+  string period_end = 1;
+}
+
+message ClosePeriodReply {
+  int32 closed_count = 1;
+  int32 failed_count = 2;
+}
+
+// --- Billing Report ---
+
+message GetBillingReportRequest {
+  int64 tenant_id = 1;
+  string period_start = 2;
+  string period_end = 3;
+}
+
+message GetBillingReportReply {
+  BillingReport report = 1;
+}

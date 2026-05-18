@@ -3,12 +3,12 @@ module github.com/makesalekz/platform-billing
 go 1.26.0
 
 require (
-	entgo.io/ent v0.14.2
+	entgo.io/ent v0.14.4
 	github.com/go-kratos/kratos/v2 v2.7.3
 	github.com/google/wire v0.7.0
 	github.com/lib/pq v1.12.3
-	github.com/makesalekz/tenants v1.2.0-pre
-	github.com/makesalekz/utils v0.3.21
+	github.com/makesalekz/tenants v1.99.0
+	github.com/makesalekz/utils v0.4.0
 	github.com/nats-io/nats.go v1.52.0
 	github.com/shopspring/decimal v1.3.1
 	github.com/stretchr/testify v1.11.1
@@ -36,7 +36,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.13.0 // indirect
 	github.com/imdario/mergo v0.3.16 // indirect
 	github.com/klauspost/compress v1.18.5 // indirect
-	github.com/makesalekz/iam v1.8.3 // indirect
+	github.com/makesalekz/iam v1.99.0 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.0 // indirect
 	github.com/nats-io/nkeys v0.4.15 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
@@ -56,9 +56,3 @@ require (
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20240528184218-531527333157 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-replace github.com/makesalekz/utils => ../utils
-
-replace github.com/makesalekz/tenants => ../tenants
-
-replace github.com/makesalekz/iam => ../iam

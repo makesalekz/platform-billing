@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package tenants.v1;
+
+import "errors/errors.proto";
+
+option go_package = "gitlab.calendaria.team/services/tenants/api/tenants/v1;tenants_v1";
+option java_multiple_files = true;
+option java_package = "tenants.v1";
+
+enum ErrorReason {
+  // Set default error code.
+  option (errors.default_code) = 500;
+
+  // Set the error code separately for an enumeration.
+  INTERNAL = 0;
+  GRPC_CONNECTION = 1;
+  SERVICE_FAILED = 2;
+  DATABASE_QUERY = 3;
+  EMPTY_ACTOR_ID = 5;
+
+  UNAUTHORIZED = 10 [(errors.code) = 401];
+  NOT_FOUND = 11 [(errors.code) = 404];
+  FORBIDDEN = 12 [(errors.code) = 403];
+
+  INVALID_REQUEST = 20 [(errors.code) = 400];
+  RESOURCE_ALREADY_EXISTS = 21 [(errors.code) = 409];
+}

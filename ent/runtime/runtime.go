@@ -2,7 +2,7 @@
 
 package runtime
 
-// The schema-stitching logic is generated in gitlab.calendaria.team/services/platform-billing/ent/runtime.go
+// The schema-stitching logic is generated in github.com/makesalekz/platform-billing/ent/runtime.go
 
 const (
 	Version = "v0.14.0"                                         // Version of ent codegen.

@@ -11,7 +11,7 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitlab.calendaria.team/services/platform-billing/ent/exclusion"
+	"github.com/makesalekz/platform-billing/ent/exclusion"
 )
 
 // ExclusionCreate is the builder for creating a Exclusion entity.

@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"gitlab.calendaria.team/services/platform-billing/ent"
-	"gitlab.calendaria.team/services/platform-billing/ent/saleevent"
+	"github.com/makesalekz/platform-billing/ent"
+	"github.com/makesalekz/platform-billing/ent/saleevent"
 )
 
 type SaleEventsRepo interface {

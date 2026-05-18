@@ -8,8 +8,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitlab.calendaria.team/services/platform-billing/ent/commission"
-	"gitlab.calendaria.team/services/platform-billing/ent/predicate"
+	"github.com/makesalekz/platform-billing/ent/commission"
+	"github.com/makesalekz/platform-billing/ent/predicate"
 )
 
 // CommissionDelete is the builder for deleting a Commission entity.

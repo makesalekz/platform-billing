@@ -4,9 +4,9 @@ import (
 	"context"
 	"time"
 
-	"gitlab.calendaria.team/services/platform-billing/ent"
-	"gitlab.calendaria.team/services/platform-billing/ent/commission"
-	"gitlab.calendaria.team/services/platform-billing/ent/enum"
+	"github.com/makesalekz/platform-billing/ent"
+	"github.com/makesalekz/platform-billing/ent/commission"
+	"github.com/makesalekz/platform-billing/ent/enum"
 
 	"github.com/shopspring/decimal"
 )

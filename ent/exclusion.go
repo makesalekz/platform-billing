@@ -10,7 +10,7 @@ import (
 
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
-	"gitlab.calendaria.team/services/platform-billing/ent/exclusion"
+	"github.com/makesalekz/platform-billing/ent/exclusion"
 )
 
 // Exclusion is the model entity for the Exclusion schema.

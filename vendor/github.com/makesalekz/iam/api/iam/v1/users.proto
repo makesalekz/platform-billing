@@ -1,0 +1,157 @@
+syntax = "proto3";
+
+package iam.v1;
+
+import "api/utils/v1/models.proto";
+import "api/iam/v1/models.proto";
+
+option go_package = "github.com/makesalekz/iam/api/iam/v1;iam_v1";
+option java_multiple_files = true;
+option java_package = "iam.v1";
+
+service Users {
+  // Get current profile
+  // Returns: full own profile
+  rpc GetOwnProfile(utils.v1.EmptyRequest) returns (UserFullReply);
+
+  // Update current profile
+  // Request: user data to update
+  // Returns: full own profile
+  rpc UpdateOwnProfile(UpdateOwnProfileRequest) returns (UserFullReply);
+
+  rpc DeleteOwnProfile(utils.v1.EmptyRequest) returns (utils.v1.EmptyReply);
+
+  // Get full user's information by ID
+  // Request: ID of the user
+  // Returns: full user's information
+  rpc GetUserFull(GetUserRequest) returns (UserFullReply);
+
+  // Get full user's information by search filter
+  // Request: search filter
+  // Returns: full user's information
+  rpc GetUserByFilterFull(GetUserByFilterRequest) returns (UserFullReply);
+
+  // Get user's short information by ID
+  // Request: ID of the user
+  // Returns: user's short information
+  rpc GetUser(GetUserRequest) returns (UserReply);
+
+  // Get user's short information by search filter
+  // Request: search filter
+  // Returns: user's short information
+  rpc GetUserByFilter(GetUserByFilterRequest) returns (UserReply);
+
+  // Get users by IDs, phones or emails
+  // Request: IDs, phones or emails of the users
+  // Returns: users' short information
+  rpc GetUsers(GetUsersRequest) returns (UsersReply);
+
+  // List users by IDs, or using search filter
+  // Request: IDs, or search filter
+  // Returns: users' short information
+  rpc ListUsers(ListUsersRequest) returns (UsersReply);
+
+  // Update user last seen (online) time this method is used s2s
+  // Request: user ID and last seen time
+  // Returns: empty reply
+  rpc UpdateUserLastSeen(UpdateLastSeenRequest) returns (utils.v1.EmptyReply);
+
+  // Block user
+  // Request: user ID
+  // Return: empty reply
+  rpc BlockUser(GetUserRequest) returns (utils.v1.EmptyReply);
+
+  // Unblock user
+  // Request: user ID
+  // Return: empty reply
+  rpc UnblockUser(GetUserRequest) returns (utils.v1.EmptyReply);
+
+  // Delete user
+  // Request: user ID
+  // Return: empty reply
+  rpc DeleteUser(GetUserRequest) returns (utils.v1.EmptyReply);
+
+}
+
+/* UserFullReply is a reply with full user information */
+message UserFullReply {
+  // user information
+  User user = 1;
+  // user's tenants
+  repeated TenantShort tenants = 2;
+}
+
+/* UpdateOwnProfileRequest is a request to update own profile */
+message UpdateOwnProfileRequest {
+  // phone of the user, in any format containing country code
+  string phone = 1;
+  string email = 2;
+  string username = 9;
+  string name = 3;
+  // bio text of the user
+  optional string bio = 4;
+  // URL string of avatar of the user
+  string avatar = 5;
+  // timezone of the user
+  string timezone = 6;
+  // if true, include tenants of the user in the reply
+  bool withTenants = 7;
+}
+
+/* GetUserRequest is a request to get user by ID */
+message GetUserRequest {
+  // ID of the user
+  int64 userId = 1;
+}
+
+/* GetUserByFilterRequest is a request to get user by filter */
+message GetUserByFilterRequest {
+  // search filter
+  SearchFilter search = 1;
+}
+
+/* SearchFilter is a filter to search user */
+message SearchFilter {
+  oneof fields {
+    // in case of search by phone, search.email should not be present
+    string phone = 1;
+    // in case of search by email, search.phone should not be present
+    string email = 2;
+  }
+}
+
+/* UserReply is a reply with short user information */
+message UserReply {
+  // user information
+  UserShort user = 1;
+}
+
+/* GetUsersRequest is a request to get users by IDs, phones or emails */
+message GetUsersRequest {
+  repeated int64 ids = 1;
+  repeated string phones = 2;
+  repeated string emails = 3;
+
+  // if true, include privacy settings of the users in the reply
+  bool withPrivacies = 6;
+  // if true, include information on the users' verification status in the reply
+  bool withVerified = 9;
+}
+
+/* ListUsersRequest is a request to list users by IDs, or using search filter */
+message ListUsersRequest {
+  repeated int64 ids = 1;
+  // if present, will be used to filter users by fields: phone, email, name
+  string search = 4;
+  utils.v1.SortRequest sort = 7;
+  utils.v1.PaginateRequest paginate = 8;
+}
+
+message UsersReply {
+  repeated UserShort users = 1;
+}
+
+message UpdateLastSeenRequest {
+  int64 userId = 1;
+  string lastSeenTime = 2; // RFC 3339 format
+}

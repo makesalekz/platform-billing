@@ -4,11 +4,11 @@ import (
 	"context"
 	"time"
 
-	v1 "gitlab.calendaria.team/services/platform-billing/api/platform_billing/v1"
-	"gitlab.calendaria.team/services/platform-billing/ent"
-	"gitlab.calendaria.team/services/platform-billing/internal/biz"
-	"gitlab.calendaria.team/services/platform-billing/internal/data"
-	"gitlab.calendaria.team/services/utils/v2/auth"
+	v1 "github.com/makesalekz/platform-billing/api/platform_billing/v1"
+	"github.com/makesalekz/platform-billing/ent"
+	"github.com/makesalekz/platform-billing/internal/biz"
+	"github.com/makesalekz/platform-billing/internal/data"
+	"github.com/makesalekz/utils/v2/auth"
 )
 
 type PlatformBillingService struct {

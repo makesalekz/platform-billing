@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package tenants.v1;
+
+import "api/utils/v1/models.proto";
+import "api/iam/v1/models.proto";
+
+option go_package = "github.com/makesalekz/tenants/api/tenants/v1;tenants_v1";
+option java_multiple_files = true;
+option java_package = "tenants.v1";
+
+message MemberShort {
+  int64 id = 1;
+  int64 userId = 2;
+}
+
+message Tenant {
+  int64 id = 1;
+  int64 ownerId = 2;
+  string name = 3;
+  string createdAt = 4;
+  string type = 5;
+  optional int64 referredBy = 6;
+}
+
+message TenantReply {
+  Tenant tenant = 1;
+}
+
+message Group {
+  int64 id = 1;
+  string identityId = 2;
+  string name = 3;
+  string description = 4;
+  string createdAt = 5;
+  string updatedAt = 6;
+}
+
+message TenantMember {
+  int64 id = 1;
+  string createdAt = 2;
+  optional string identityId = 3;
+
+  iam.v1.UserShort user = 4;
+  repeated int64 groups = 5;
+}
+
+message ListMembersReply {
+  repeated TenantMember members = 1;
+  repeated Group groups=3;
+  utils.v1.PaginateReply paginate = 2;
+}

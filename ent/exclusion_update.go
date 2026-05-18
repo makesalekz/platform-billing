@@ -12,8 +12,8 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/dialect/sql/sqljson"
 	"entgo.io/ent/schema/field"
-	"gitlab.calendaria.team/services/platform-billing/ent/exclusion"
-	"gitlab.calendaria.team/services/platform-billing/ent/predicate"
+	"github.com/makesalekz/platform-billing/ent/exclusion"
+	"github.com/makesalekz/platform-billing/ent/predicate"
 )
 
 // ExclusionUpdate is the builder for updating Exclusion entities.

@@ -11,8 +11,8 @@ import (
 	"entgo.io/ent/dialect/sql"
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
-	"gitlab.calendaria.team/services/platform-billing/ent/exclusion"
-	"gitlab.calendaria.team/services/platform-billing/ent/predicate"
+	"github.com/makesalekz/platform-billing/ent/exclusion"
+	"github.com/makesalekz/platform-billing/ent/predicate"
 )
 
 // ExclusionQuery is the builder for querying Exclusion entities.

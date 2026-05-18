@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"entgo.io/ent/dialect/sql"
-	"gitlab.calendaria.team/services/platform-billing/ent/enum"
+	"github.com/makesalekz/platform-billing/ent/enum"
 )
 
 const (

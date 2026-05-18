@@ -531,7 +531,7 @@ const file_api_platform_billing_v1_platform_billing_proto_rawDesc = "" +
 	"\x0eListExclusions\x12*.platform_billing.v1.ListExclusionsRequest\x1a(.platform_billing.v1.ListExclusionsReply\x12i\n" +
 	"\x0fDeleteExclusion\x12+.platform_billing.v1.DeleteExclusionRequest\x1a).platform_billing.v1.DeleteExclusionReply\x12]\n" +
 	"\vClosePeriod\x12'.platform_billing.v1.ClosePeriodRequest\x1a%.platform_billing.v1.ClosePeriodReply\x12l\n" +
-	"\x10GetBillingReport\x12,.platform_billing.v1.GetBillingReportRequest\x1a*.platform_billing.v1.GetBillingReportReplyB^Z\\gitlab.calendaria.team/services/platform-billing/api/platform_billing/v1;platform_billing_v1b\x06proto3"
+	"\x10GetBillingReport\x12,.platform_billing.v1.GetBillingReportRequest\x1a*.platform_billing.v1.GetBillingReportReplyB^Z\\github.com/makesalekz/platform-billing/api/platform_billing/v1;platform_billing_v1b\x06proto3"
 
 var (
 	file_api_platform_billing_v1_platform_billing_proto_rawDescOnce sync.Once

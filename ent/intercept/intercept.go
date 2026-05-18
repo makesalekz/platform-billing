@@ -7,11 +7,11 @@ import (
 	"fmt"
 
 	"entgo.io/ent/dialect/sql"
-	"gitlab.calendaria.team/services/platform-billing/ent"
-	"gitlab.calendaria.team/services/platform-billing/ent/commission"
-	"gitlab.calendaria.team/services/platform-billing/ent/exclusion"
-	"gitlab.calendaria.team/services/platform-billing/ent/predicate"
-	"gitlab.calendaria.team/services/platform-billing/ent/saleevent"
+	"github.com/makesalekz/platform-billing/ent"
+	"github.com/makesalekz/platform-billing/ent/commission"
+	"github.com/makesalekz/platform-billing/ent/exclusion"
+	"github.com/makesalekz/platform-billing/ent/predicate"
+	"github.com/makesalekz/platform-billing/ent/saleevent"
 )
 
 // The Query interface represents an operation that queries a graph.

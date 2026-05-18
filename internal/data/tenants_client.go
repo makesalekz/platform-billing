@@ -3,8 +3,8 @@ package data
 import (
 	"context"
 
-	tenants_v1 "gitlab.calendaria.team/services/tenants/api/tenants/v1"
-	"gitlab.calendaria.team/services/platform-billing/internal/conf"
+	tenants_v1 "github.com/makesalekz/tenants/api/tenants/v1"
+	"github.com/makesalekz/platform-billing/internal/conf"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"google.golang.org/grpc"

@@ -10,8 +10,8 @@ import (
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	"github.com/shopspring/decimal"
-	"gitlab.calendaria.team/services/platform-billing/ent/commission"
-	"gitlab.calendaria.team/services/platform-billing/ent/enum"
+	"github.com/makesalekz/platform-billing/ent/commission"
+	"github.com/makesalekz/platform-billing/ent/enum"
 )
 
 // Commission is the model entity for the Commission schema.

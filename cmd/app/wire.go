@@ -8,11 +8,11 @@ import (
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/google/wire"
 
-	"gitlab.calendaria.team/services/platform-billing/internal/biz"
-	"gitlab.calendaria.team/services/platform-billing/internal/conf"
-	"gitlab.calendaria.team/services/platform-billing/internal/data"
-	"gitlab.calendaria.team/services/platform-billing/internal/server"
-	"gitlab.calendaria.team/services/platform-billing/internal/service"
+	"github.com/makesalekz/platform-billing/internal/biz"
+	"github.com/makesalekz/platform-billing/internal/conf"
+	"github.com/makesalekz/platform-billing/internal/data"
+	"github.com/makesalekz/platform-billing/internal/server"
+	"github.com/makesalekz/platform-billing/internal/service"
 )
 
 func wireApp(*conf.Bootstrap, log.Logger) (*kratos.App, func(), error) {

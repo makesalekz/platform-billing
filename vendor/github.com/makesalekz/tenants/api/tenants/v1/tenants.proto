@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package tenants.v1;
+
+import "api/utils/v1/models.proto";
+import "api/tenants/v1/models.proto";
+
+option go_package = "github.com/makesalekz/tenants/api/tenants/v1;tenants_v1";
+option java_multiple_files = true;
+option java_package = "tenants.v1";
+
+service Tenants {
+  // WARNING: Super unsafe method, never expose it, NEVER EVER
+  rpc CreateTenant(CreateTenantRequest) returns (TenantReply);
+  rpc UpdateTenant(UpdateTenantRequest) returns (TenantReply);
+  rpc DeleteTenant(TenantRequest) returns (utils.v1.EmptyReply);
+  rpc DeleteUsersTenants(DeleteUsersTenantsRequest) returns (utils.v1.EmptyReply);
+  rpc GetTenant(TenantRequest) returns (TenantReply);
+  rpc ListTenants(ListTenantsRequest) returns (ListTenantsReply);
+  rpc TransferOwnership(TransferOwnershipRequest) returns (TenantReply);
+  rpc GetReferredTenants(GetReferredTenantsRequest) returns (ListTenantsReply);
+}
+
+message CreateTenantRequest {
+  string name = 1;
+  string type = 2;  // default = PERSONAL
+  optional int64 referred_by = 3;
+}
+
+message UpdateTenantRequest {
+  int64 tenantId = 1;
+  string name = 2;
+}
+
+message TenantRequest {
+  int64 tenantId = 1;
+}
+
+message DeleteUsersTenantsRequest {
+  repeated int64 usersIds = 1;
+}
+
+message ListTenantsRequest {
+  int64 userId = 3;
+  int64 ownerId = 1;
+  utils.v1.PaginateRequest paginate = 2;
+}
+
+message ListTenantsReply {
+  repeated Tenant tenants = 1;
+  utils.v1.PaginateReply paginate = 2;
+}
+
+message TransferOwnershipRequest {
+  int64 tenantId = 1;
+  int64 newOwnerId = 2;
+}
+
+message GetReferredTenantsRequest {
+  utils.v1.PaginateRequest paginate = 1;
+}

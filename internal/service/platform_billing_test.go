@@ -5,11 +5,11 @@ import (
 	"testing"
 	"time"
 
-	v1 "gitlab.calendaria.team/services/platform-billing/api/platform_billing/v1"
-	"gitlab.calendaria.team/services/platform-billing/ent/enum"
-	"gitlab.calendaria.team/services/platform-billing/internal/biz"
-	"gitlab.calendaria.team/services/platform-billing/internal/data"
-	"gitlab.calendaria.team/services/platform-billing/messages"
+	v1 "github.com/makesalekz/platform-billing/api/platform_billing/v1"
+	"github.com/makesalekz/platform-billing/ent/enum"
+	"github.com/makesalekz/platform-billing/internal/biz"
+	"github.com/makesalekz/platform-billing/internal/data"
+	"github.com/makesalekz/platform-billing/messages"
 
 	"github.com/shopspring/decimal"
 	"github.com/stretchr/testify/assert"

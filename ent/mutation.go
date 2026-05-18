@@ -12,11 +12,11 @@ import (
 	"entgo.io/ent"
 	"entgo.io/ent/dialect/sql"
 	"github.com/shopspring/decimal"
-	"gitlab.calendaria.team/services/platform-billing/ent/commission"
-	"gitlab.calendaria.team/services/platform-billing/ent/enum"
-	"gitlab.calendaria.team/services/platform-billing/ent/exclusion"
-	"gitlab.calendaria.team/services/platform-billing/ent/predicate"
-	"gitlab.calendaria.team/services/platform-billing/ent/saleevent"
+	"github.com/makesalekz/platform-billing/ent/commission"
+	"github.com/makesalekz/platform-billing/ent/enum"
+	"github.com/makesalekz/platform-billing/ent/exclusion"
+	"github.com/makesalekz/platform-billing/ent/predicate"
+	"github.com/makesalekz/platform-billing/ent/saleevent"
 )
 
 const (

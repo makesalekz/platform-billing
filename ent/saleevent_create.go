@@ -12,7 +12,7 @@ import (
 	"entgo.io/ent/dialect/sql/sqlgraph"
 	"entgo.io/ent/schema/field"
 	"github.com/shopspring/decimal"
-	"gitlab.calendaria.team/services/platform-billing/ent/saleevent"
+	"github.com/makesalekz/platform-billing/ent/saleevent"
 )
 
 // SaleEventCreate is the builder for creating a SaleEvent entity.

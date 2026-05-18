@@ -4,12 +4,12 @@ import (
 	"context"
 	"time"
 
-	"gitlab.calendaria.team/services/platform-billing/ent"
-	"gitlab.calendaria.team/services/platform-billing/ent/enum"
-	"gitlab.calendaria.team/services/platform-billing/internal/biz"
-	"gitlab.calendaria.team/services/platform-billing/internal/data"
-	tenants_v1 "gitlab.calendaria.team/services/tenants/api/tenants/v1"
-	"gitlab.calendaria.team/services/utils/v2/auth"
+	"github.com/makesalekz/platform-billing/ent"
+	"github.com/makesalekz/platform-billing/ent/enum"
+	"github.com/makesalekz/platform-billing/internal/biz"
+	"github.com/makesalekz/platform-billing/internal/data"
+	tenants_v1 "github.com/makesalekz/tenants/api/tenants/v1"
+	"github.com/makesalekz/utils/v2/auth"
 
 	"github.com/go-kratos/kratos/v2/log"
 	"github.com/shopspring/decimal"

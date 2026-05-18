@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package iam.v1;
+
+option go_package = "github.com/makesalekz/iam/api/iam/v1;iam_v1";
+option java_multiple_files = true;
+option java_package = "iam.v1";
+
+service Auth {
+  // Auth by Phone
+  // Request: phone number
+  // Returns: id of newly created or existing user
+  rpc AuthByPhone(AuthByPhoneRequest) returns (AuthByPhoneReply);
+
+  // Auth by Email
+  // Request: email address
+  // Returns: id of newly created or existing user
+  rpc AuthByEmail(AuthByEmailRequest) returns (AuthByPhoneReply);
+
+  // Auth by Code
+  // after you authorized by phone, you suppose to enter code that you've got
+  // Request: id from AuthByPhone, code from message
+  // Returns: auth tokens
+  rpc AuthByCode(AuthByCodeRequest) returns (TokenReply);
+  // Refresh Token
+  // Request: tenant id
+  // Returns: auth tokens
+  rpc RefreshToken(TenantRequest) returns (TokenReply);
+}
+
+/* AuthByPhoneRequest is a request to authenticate by phone number */
+message AuthByPhoneRequest {
+  // phone number, in any format, containing country code
+  string phone = 1;
+  bool isRegistrationNeeded = 2;
+  bool isRegistration = 3;
+  string appSignature = 4;
+}
+
+/* AuthByEmailRequest is a request to authenticate by email */
+message AuthByEmailRequest {
+  // email address of user to authenticate
+  string email = 1;
+  // user interface language
+  string language = 2;
+  bool isRegistrationNeeded = 4;
+  bool isRegistration = 5;
+}
+
+/* AuthByPhoneReply is a response to authenticate by phone number */
+message AuthByPhoneReply {
+  // id of newly created or existing user
+  int64 userId = 1;
+}
+
+/* AuthByCodeRequest is a request to authenticate by code */
+message AuthByCodeRequest {
+  // id of user from AuthByPhoneReply
+  int64 userId = 1;
+  // code that user entered
+  string code = 2;
+}
+
+/* TenantRequest is a request inside tenant area */
+message TenantRequest {
+  // id of tenant where you want to authorize
+  int64 tenantId = 1;
+}
+
+/* TokenReply is a response to authenticate by code */
+message TokenReply {
+  // access token, that you should use to authenticate
+  string accessToken = 1;
+  // refresh token, that you should use to get fresh access token
+  string refreshToken = 2;
+}

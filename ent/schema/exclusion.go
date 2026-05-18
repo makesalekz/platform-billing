@@ -1,7 +1,7 @@
 package schema
 
 import (
-	"gitlab.calendaria.team/services/platform-billing/ent/mixins"
+	"github.com/makesalekz/platform-billing/ent/mixins"
 
 	"entgo.io/ent"
 	"entgo.io/ent/schema/field"

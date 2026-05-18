@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	"gitlab.calendaria.team/services/platform-billing/ent"
+	"github.com/makesalekz/platform-billing/ent"
 )
 
 // The CommissionFunc type is an adapter to allow the use of ordinary

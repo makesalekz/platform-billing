@@ -143,6 +143,16 @@ github.com/lib/pq/internal/proto
 github.com/lib/pq/oid
 github.com/lib/pq/pqerror
 github.com/lib/pq/scram
+# github.com/makesalekz/iam v1.8.3 => ../iam
+## explicit; go 1.26.0
+github.com/makesalekz/iam/api/iam/v1
+# github.com/makesalekz/tenants v1.2.0-pre => ../tenants
+## explicit; go 1.23.1
+github.com/makesalekz/tenants/api/tenants/v1
+# github.com/makesalekz/utils v0.3.21 => ../utils
+## explicit; go 1.21
+github.com/makesalekz/utils/api/utils/v1
+github.com/makesalekz/utils/v2/auth
 # github.com/mitchellh/go-wordwrap v1.0.0
 ## explicit
 github.com/mitchellh/go-wordwrap
@@ -182,16 +192,6 @@ github.com/zclconf/go-cty/cty/set
 # github.com/zclconf/go-cty-yaml v1.1.0
 ## explicit; go 1.17
 github.com/zclconf/go-cty-yaml
-# gitlab.calendaria.team/services/iam v1.8.3
-## explicit; go 1.21.3
-gitlab.calendaria.team/services/iam/api/iam/v1
-# gitlab.calendaria.team/services/tenants v1.0.0 => ../tenants
-## explicit; go 1.23.1
-gitlab.calendaria.team/services/tenants/api/tenants/v1
-# gitlab.calendaria.team/services/utils v0.3.21 => ../utils
-## explicit; go 1.21
-gitlab.calendaria.team/services/utils/api/utils/v1
-gitlab.calendaria.team/services/utils/v2/auth
 # go.opentelemetry.io/otel v1.24.0
 ## explicit; go 1.20
 go.opentelemetry.io/otel
@@ -371,5 +371,6 @@ google.golang.org/protobuf/types/known/wrapperspb
 # gopkg.in/yaml.v3 v3.0.1
 ## explicit
 gopkg.in/yaml.v3
-# gitlab.calendaria.team/services/utils => ../utils
-# gitlab.calendaria.team/services/tenants => ../tenants
+# github.com/makesalekz/utils => ../utils
+# github.com/makesalekz/tenants => ../tenants
+# github.com/makesalekz/iam => ../iam

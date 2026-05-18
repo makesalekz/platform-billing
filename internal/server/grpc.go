@@ -1,9 +1,9 @@
 package server
 
 import (
-	v1 "gitlab.calendaria.team/services/platform-billing/api/platform_billing/v1"
-	"gitlab.calendaria.team/services/platform-billing/internal/conf"
-	"gitlab.calendaria.team/services/platform-billing/internal/service"
+	v1 "github.com/makesalekz/platform-billing/api/platform_billing/v1"
+	"github.com/makesalekz/platform-billing/internal/conf"
+	"github.com/makesalekz/platform-billing/internal/service"
 
 	"github.com/go-kratos/kratos/v2/middleware/metadata"
 	"github.com/go-kratos/kratos/v2/middleware/recovery"

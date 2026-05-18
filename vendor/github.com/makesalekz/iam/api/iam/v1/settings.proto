@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package iam.v1;
+
+import "api/utils/v1/models.proto";
+
+option go_package = "github.com/makesalekz/iam/api/iam/v1;iam_v1";
+option java_multiple_files = true;
+option java_package = "iam.v1";
+
+service Settings {
+  // GetSettings returns the current settings
+  // Returns: the current settings of the current user
+  rpc GetSettings(utils.v1.EmptyRequest) returns (SettingsReply);
+
+  // UpdateSettings updates the settings of the current user
+  // Request: the new settings to update
+  // Returns: the updated settings of the current user
+  rpc UpdateSettings(SettingsRequest) returns (SettingsReply);
+
+  // GetUsersSettings returns the settings of the users
+  // Request: the ids of the users to get settings for
+  // Returns: the settings of the users
+  rpc GetUsersSettings(GetUsersSettingsRequest) returns (UsersSettingsReply);
+}
+
+/* SettingsRequest is the request to update the settings */
+message SettingsRequest {
+  map<string, string> settings = 1;
+}
+
+/* SettingsReply is the settings of the current user */
+message SettingsReply {
+  map<string, string> settings = 1;
+}
+
+message GetUsersSettingsRequest {
+  repeated int64 userIds = 1;
+}
+
+message UsersSettingsReply {
+  map<int64, SettingsReply> usersSettings = 1;
+}

@@ -419,7 +419,7 @@ const file_api_platform_billing_v1_models_proto_rawDesc = "" +
 	"\n" +
 	"commission\x18\b \x01(\tR\n" +
 	"commission\x12\x16\n" +
-	"\x06status\x18\t \x01(\tR\x06statusB^Z\\gitlab.calendaria.team/services/platform-billing/api/platform_billing/v1;platform_billing_v1b\x06proto3"
+	"\x06status\x18\t \x01(\tR\x06statusB^Z\\github.com/makesalekz/platform-billing/api/platform_billing/v1;platform_billing_v1b\x06proto3"
 
 var (
 	file_api_platform_billing_v1_models_proto_rawDescOnce sync.Once

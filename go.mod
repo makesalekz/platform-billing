@@ -1,17 +1,17 @@
-module gitlab.calendaria.team/services/platform-billing
+module github.com/makesalekz/platform-billing
 
-go 1.25.0
+go 1.26.0
 
 require (
 	entgo.io/ent v0.14.2
 	github.com/go-kratos/kratos/v2 v2.7.3
 	github.com/google/wire v0.7.0
 	github.com/lib/pq v1.12.3
+	github.com/makesalekz/tenants v1.2.0-pre
+	github.com/makesalekz/utils v0.3.21
 	github.com/nats-io/nats.go v1.52.0
 	github.com/shopspring/decimal v1.3.1
 	github.com/stretchr/testify v1.11.1
-	gitlab.calendaria.team/services/tenants v1.0.0
-	gitlab.calendaria.team/services/utils v0.3.21
 	go.uber.org/automaxprocs v1.6.0
 	google.golang.org/grpc v1.65.0
 	google.golang.org/protobuf v1.34.1
@@ -36,13 +36,13 @@ require (
 	github.com/hashicorp/hcl/v2 v2.13.0 // indirect
 	github.com/imdario/mergo v0.3.16 // indirect
 	github.com/klauspost/compress v1.18.5 // indirect
+	github.com/makesalekz/iam v1.8.3 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.0 // indirect
 	github.com/nats-io/nkeys v0.4.15 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
 	github.com/pmezard/go-difflib v1.0.1-0.20181226105442-5d4384ee4fb2 // indirect
 	github.com/zclconf/go-cty v1.14.4 // indirect
 	github.com/zclconf/go-cty-yaml v1.1.0 // indirect
-	gitlab.calendaria.team/services/iam v1.8.3 // indirect
 	go.opentelemetry.io/otel v1.24.0 // indirect
 	go.opentelemetry.io/otel/metric v1.24.0 // indirect
 	go.opentelemetry.io/otel/trace v1.24.0 // indirect
@@ -57,6 +57,8 @@ require (
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
 
-replace gitlab.calendaria.team/services/utils => ../utils
+replace github.com/makesalekz/utils => ../utils
 
-replace gitlab.calendaria.team/services/tenants => ../tenants
+replace github.com/makesalekz/tenants => ../tenants
+
+replace github.com/makesalekz/iam => ../iam

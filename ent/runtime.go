@@ -5,10 +5,10 @@ package ent
 import (
 	"time"
 
-	"gitlab.calendaria.team/services/platform-billing/ent/commission"
-	"gitlab.calendaria.team/services/platform-billing/ent/exclusion"
-	"gitlab.calendaria.team/services/platform-billing/ent/saleevent"
-	"gitlab.calendaria.team/services/platform-billing/ent/schema"
+	"github.com/makesalekz/platform-billing/ent/commission"
+	"github.com/makesalekz/platform-billing/ent/exclusion"
+	"github.com/makesalekz/platform-billing/ent/saleevent"
+	"github.com/makesalekz/platform-billing/ent/schema"
 )
 
 // The init function reads all schema descriptors with runtime code

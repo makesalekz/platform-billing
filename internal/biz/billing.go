@@ -5,10 +5,10 @@ import (
 	"encoding/json"
 	"time"
 
-	"gitlab.calendaria.team/services/platform-billing/ent"
-	"gitlab.calendaria.team/services/platform-billing/ent/enum"
-	"gitlab.calendaria.team/services/platform-billing/internal/data"
-	"gitlab.calendaria.team/services/platform-billing/messages"
+	"github.com/makesalekz/platform-billing/ent"
+	"github.com/makesalekz/platform-billing/ent/enum"
+	"github.com/makesalekz/platform-billing/internal/data"
+	"github.com/makesalekz/platform-billing/messages"
 
 	"github.com/go-kratos/kratos/v2/log"
 	nats "github.com/nats-io/nats.go"

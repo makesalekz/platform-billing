@@ -1,0 +1,91 @@
+syntax = "proto3";
+
+package iam.v1;
+
+option go_package = "github.com/makesalekz/iam/api/iam/v1;iam_v1";
+option java_multiple_files = true;
+option java_package = "iam.v1";
+
+/* User's full information */
+message User {
+  int64 id = 1;
+  string name = 2;
+  // bio – multiline text
+  string bio = 3;
+  // timezone in RFC 3339 format
+  string timezone = 4;
+  // created at in RFC 3339 format
+  string createdAt = 5;
+  // updated at in RFC 3339 format
+  string updatedAt = 6;
+  // last login at in RFC 3339 format
+  string lastLoginAt = 7;
+  bool isActive = 8;
+  optional string phone = 9;
+  optional string email = 10;
+  optional string username = 15;
+  optional string avatar = 11;
+  // bio updated at in RFC 3339 format
+  optional string bioUpdatedAt = 12;
+  optional bool isPhoneVerified = 13;
+  optional bool isEmailVerified = 14;
+  optional bool isBlocked = 17;
+  string lastActivityAt = 16; // TODO: deprecated
+  bool isOnline = 19;
+  bool isLastSeenAvailable = 20;
+  string lastSeen = 18;
+}
+
+/* User's short information */
+message UserShort {
+  int64 id = 1;
+  string phone = 2;
+  string email = 3;
+  string username = 12;
+  string name = 4;
+  string avatar = 6;
+  // last login at in RFC 3339 format
+  string lastLoginAt = 7;
+  string lastActivityAt = 13; // TODO: deprecated
+  bool isOnline = 16;
+  bool isLastSeenAvailable = 17;
+  string lastSeen = 15;
+  optional bool isPhoneVerified = 10;
+  optional bool isEmailVerified = 11;
+  optional bool isBlocked = 14;
+
+  map<string, string> privacies = 9;
+}
+
+/* Tenant's short information */
+message TenantShort {
+  int64 id = 1;
+  string name = 3;
+}
+
+/* UserCredentialsShort is a short version of UserCredentials */
+message UserCredentialShort {
+  int64 id = 1;
+  // email on third party service
+  string mail = 3;
+  // display name on third party service
+  optional string displayName = 4;
+  // provider name (google)
+  optional string provider = 5;
+}
+
+/* UserCredential is a user's credential on third party service (provider) */
+message UserCredential {
+  int64 id = 1;
+  string accessToken = 2;
+  // email on third party service
+  string mail = 3;
+  // display name on third party service
+  optional string displayName = 4;
+  // provider name (google)
+  optional string provider = 5;
+  optional string tokenType = 6;
+  optional string refreshToken = 7;
+  // expires at in RFC 3339 format
+  optional string expiresAt = 8;
+}

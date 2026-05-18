@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package platform_billing.v1;
 
-option go_package = "gitlab.calendaria.team/services/platform-billing/api/platform_billing/v1;platform_billing_v1";
+option go_package = "github.com/makesalekz/platform-billing/api/platform_billing/v1;platform_billing_v1";
 
 import "api/platform_billing/v1/models.proto";
 

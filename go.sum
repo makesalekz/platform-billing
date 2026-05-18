@@ -67,10 +67,10 @@ github.com/kylelemons/godebug v1.1.0 h1:RPNrshWIDI6G2gRW9EHilWtl7Z6Sb1BR0xunSBf0
 github.com/kylelemons/godebug v1.1.0/go.mod h1:9/0rRGxNHcop5bhtWyNeEfOS8JIWk580+fNqagV/RAw=
 github.com/lib/pq v1.12.3 h1:tTWxr2YLKwIvK90ZXEw8GP7UFHtcbTtty8zsI+YjrfQ=
 github.com/lib/pq v1.12.3/go.mod h1:/p+8NSbOcwzAEI7wiMXFlgydTwcgTr3OSKMsD2BitpA=
-github.com/makesalekz/iam v1.99.0 h1:xigMCb2h+5QX1ArF7Buho6RdpfdEzo3kpmMXJEUrTDE=
-github.com/makesalekz/iam v1.99.0/go.mod h1:AUeYDKPOZL0Gbf4wpHv9koErEkNQnOw2E+MEVvVmfCw=
-github.com/makesalekz/tenants v1.99.0 h1:u9K/NkFQNW9QbpMrLg6uX3IMlF8H6iVBXh5n9fTZkGM=
-github.com/makesalekz/tenants v1.99.0/go.mod h1:WynYYgfbeaJAZzItcy2VoNonquU+pL8BbxYtOzw4XYY=
+github.com/makesalekz/iam v1.99.1 h1:tR90M2wxV0/1O95nVd+x99CXRTA80lzcy7bnn1tD/fc=
+github.com/makesalekz/iam v1.99.1/go.mod h1:AUeYDKPOZL0Gbf4wpHv9koErEkNQnOw2E+MEVvVmfCw=
+github.com/makesalekz/tenants v1.99.1 h1:Uv8mTDA3AqkVWEHKutr5TanEurMtKgRveEoV8I72JN0=
+github.com/makesalekz/tenants v1.99.1/go.mod h1:7aTHDyiJiPSG1RkYgFKtP3c3OXO0MfLtgWY4FBW/PhQ=
 github.com/makesalekz/utils v0.4.0 h1:fsw7QCJDzchfQcI8BZpr1yU1NeAHygmdHblS3jPVmks=
 github.com/makesalekz/utils v0.4.0/go.mod h1:SJoyp62UysGVkkgycOaGdEKVV3avcsImzL9nds82l3E=
 github.com/mattn/go-sqlite3 v1.14.16 h1:yOQRA0RpS5PFz/oikGwBEqvAWhWg5ufRz4ETLjwpU1Y=

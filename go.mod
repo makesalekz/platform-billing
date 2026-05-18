@@ -7,7 +7,7 @@ require (
 	github.com/go-kratos/kratos/v2 v2.7.3
 	github.com/google/wire v0.7.0
 	github.com/lib/pq v1.12.3
-	github.com/makesalekz/tenants v1.99.0
+	github.com/makesalekz/tenants v1.99.1
 	github.com/makesalekz/utils v0.4.0
 	github.com/nats-io/nats.go v1.52.0
 	github.com/shopspring/decimal v1.3.1
@@ -36,7 +36,7 @@ require (
 	github.com/hashicorp/hcl/v2 v2.13.0 // indirect
 	github.com/imdario/mergo v0.3.16 // indirect
 	github.com/klauspost/compress v1.18.5 // indirect
-	github.com/makesalekz/iam v1.99.0 // indirect
+	github.com/makesalekz/iam v1.99.1 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.0 // indirect
 	github.com/nats-io/nkeys v0.4.15 // indirect
 	github.com/nats-io/nuid v1.0.1 // indirect
